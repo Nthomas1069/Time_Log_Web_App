@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<div class="headline">
+  <h2>{{ the_title }}</h2>
+  <nav>
+    <h6><a href="about">About</a></h6>
+  </nav>
+</div>
+
+<div class="tooltip">Instructions
+  <span class="tooltiptext">
+    <p class="intro">Input clock-in / clock-out times in the appropriate fields. 
+      Up to three work periods can be calculated together. Times may be input in 
+      military or standard three or four digit formats. Use numbers only (no 
+      special characters such as a colon ":". Examples: 800, 0800, 1237, 1920, etc.).
+      Then click "Calculate". That's it!
+    </p>
+  </span>
+</div> 
+
+<form method='POST' action='time_calc'>
+  <table>
+    <thead>
+      <th></th>
+      <th><h3>Time IN</h3></th>
+      <th><h3>Time OUT</h3></th>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1st period</td>
+        <td><input name="in1" type='text' width='20' minlength="3" minlength="4" pattern="\d+" required></td>
+        <td><input name="out1" type='text' width='20' minlength="3" maxlength="4" pattern="\d+" required ></td>
+      </tr>
+      <tr>
+        <td>2nd period</td>
+        <td><input name='in2' type='text' width='20' value="0" minlength="3" maxlength="4" pattern="\d+"></td>
+        <td><input name='out2' type='text' width='20' value="0" minlength="3" maxlength="4" pattern="\d+"></td>
+      </tr>
+      <tr>
+        <td>3rd period</td>
+        <td><input name='in3' type='text' width='20' value="0" minlength="3" maxlength="4" pattern="\d+"></td>
+        <td><input name='out3' type='text' width='20' value="0" minlength="3" maxlength="4" pattern="\d+"></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p><input class="button" value='Calculate' type='SUBMIT'></p>
+
+</form>
+
+{% endblock %}
